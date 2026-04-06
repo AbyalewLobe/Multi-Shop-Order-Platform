@@ -1,0 +1,9 @@
+{
+  "name": "@monorepo/shared",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo 'Build shared package'",
+    "test": "echo 'Test shared package'"
+  }
+}
