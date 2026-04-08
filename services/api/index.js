@@ -1,3 +1,3 @@
-const { greet } = require('@monorepo/shared');
+const { capitalize } = require('@monorepo/utils');
 
-console.log(greet('API service'));
+console.log(capitalize('api service started'));

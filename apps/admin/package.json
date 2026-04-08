@@ -1,12 +1,13 @@
 {
-  "name": "@monorepo/api",
+  "name": "@monorepo/admin",
   "version": "1.0.0",
   "scripts": {
     "dev": "node index.js",
-    "build": "echo 'Build API service'",
+    "build": "echo 'Build admin app'",
     "start": "node index.js"
   },
   "dependencies": {
+    "@monorepo/ui": "*",
     "@monorepo/utils": "*"
   }
 }
