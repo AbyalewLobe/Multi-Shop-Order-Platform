@@ -2,11 +2,11 @@
   "name": "@monorepo/api",
   "version": "1.0.0",
   "scripts": {
-    "dev": "node index.js",
-    "build": "echo 'Build API service'",
-    "start": "node index.js"
+    "dev": "node server.js",
+    "start": "node server.js"
   },
   "dependencies": {
-    "@monorepo/utils": "*"
+    "@monorepo/utils": "*",
+    "express": "4.18.2"
   }
 }
