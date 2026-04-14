@@ -1,5 +1,0 @@
-const { Button } = require('@monorepo/ui');
-const { formatDate } = require('@monorepo/utils');
-
-console.log('Web app started');
-console.log(formatDate(new Date()));
