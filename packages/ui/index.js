@@ -1,8 +1,2 @@
-/**
- * Shared UI components
- */
-const Button = {
-  render: (text) => `<button>${text}</button>`
-};
-
-module.exports = { Button };
+export { Button } from './components/Button.js';
+export { Card, CardHeader, CardBody } from './components/Card.js';

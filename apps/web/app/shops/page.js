@@ -1,3 +1,5 @@
+import { Card } from '@monorepo/ui';
+
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
 
 async function getShops() {
@@ -14,17 +16,14 @@ export default async function ShopsPage() {
       <h1 className="text-3xl font-bold mb-8">Shops</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {shops.map((shop) => (
-          <div
-            key={shop.id}
-            className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm hover:shadow-md transition-shadow"
-          >
+          <Card key={shop.id} className="p-5 hover:shadow-md transition-shadow">
             <div className="flex items-start justify-between mb-2">
               <h2 className="font-semibold text-lg leading-tight">{shop.name}</h2>
               <span className="text-sm font-medium text-yellow-500">★ {shop.rating}</span>
             </div>
             <p className="text-sm text-gray-500 capitalize">{shop.category}</p>
             <p className="text-sm text-gray-400 mt-1">{shop.city}</p>
-          </div>
+          </Card>
         ))}
       </div>
       <a href="/" className="inline-block mt-10 text-sm text-gray-500 hover:text-gray-800 transition-colors">

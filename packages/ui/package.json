@@ -1,9 +1,14 @@
 {
   "name": "@monorepo/ui",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0"
+  },
   "scripts": {
-    "build": "echo 'Build UI components'",
-    "test": "echo 'Test UI components'"
+    "build": "echo 'No build step required'"
   }
 }
