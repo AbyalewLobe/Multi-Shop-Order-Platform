@@ -1,3 +1,5 @@
+import { Card } from '@monorepo/ui';
+
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
 
 async function getStats() {
@@ -27,10 +29,10 @@ export default async function DashboardPage() {
       <h2 className="text-2xl font-bold mb-6">Dashboard</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg">
         {stats.map(({ label, value }) => (
-          <div key={label} className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+          <Card key={label} className="p-6">
             <p className="text-sm text-gray-500 mb-1">{label}</p>
             <p className="text-4xl font-bold">{value}</p>
-          </div>
+          </Card>
         ))}
       </div>
     </div>
