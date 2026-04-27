@@ -1,15 +1,8 @@
 import { Card } from '@monorepo/ui';
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
-
-async function getShops() {
-  const res = await fetch(`${API_URL}/shops`, { cache: 'no-store' });
-  if (!res.ok) throw new Error('Failed to fetch shops');
-  return res.json();
-}
+import { apiFetch, apiUrl } from '@monorepo/utils';
 
 export default async function ShopsPage() {
-  const { data: shops } = await getShops();
+  const { data: shops } = await apiFetch(apiUrl('/shops'), { cache: 'no-store' });
 
   return (
     <main className="max-w-4xl mx-auto px-6 py-12">

@@ -1,9 +1,11 @@
 {
   "name": "@monorepo/utils",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js"
+  },
   "scripts": {
-    "build": "echo 'Build utils'",
-    "test": "echo 'Test utils'"
+    "build": "echo 'No build step required'"
   }
 }

@@ -2,10 +2,11 @@
 
 import { useState } from 'react';
 import { Button, Card } from '@monorepo/ui';
+import { apiFetch, apiUrl, ApiError } from '@monorepo/utils';
 
 export default function ProductForm({ shops }) {
   const [form, setForm] = useState({ name: '', price: '', shopId: '' });
-  const [status, setStatus] = useState(null); // 'success' | 'error' | null
+  const [status, setStatus] = useState(null); // 'success' | string (error message) | null
 
   function handleChange(e) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -16,24 +17,16 @@ export default function ProductForm({ shops }) {
     setStatus(null);
 
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'}/products`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(form),
-        }
-      );
-
-      if (!res.ok) {
-        const { error } = await res.json();
-        throw new Error(error || 'Failed to create product');
-      }
+      await apiFetch(apiUrl('/products'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
 
       setForm({ name: '', price: '', shopId: '' });
       setStatus('success');
     } catch (err) {
-      setStatus(err.message);
+      setStatus(err instanceof ApiError ? err.message : 'Something went wrong');
     }
   }
 

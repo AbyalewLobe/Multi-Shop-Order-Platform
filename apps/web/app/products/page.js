@@ -1,18 +1,10 @@
 import { Card } from '@monorepo/ui';
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+import { apiFetch, apiUrl } from '@monorepo/utils';
 
 async function getData() {
-  const [productsRes, shopsRes] = await Promise.all([
-    fetch(`${API_URL}/products`, { cache: 'no-store' }),
-    fetch(`${API_URL}/shops`, { cache: 'no-store' }),
-  ]);
-
-  if (!productsRes.ok || !shopsRes.ok) throw new Error('Failed to fetch data');
-
   const [{ data: products }, { data: shops }] = await Promise.all([
-    productsRes.json(),
-    shopsRes.json(),
+    apiFetch(apiUrl('/products'), { cache: 'no-store' }),
+    apiFetch(apiUrl('/shops'), { cache: 'no-store' }),
   ]);
 
   const shopMap = Object.fromEntries(shops.map((s) => [s.id, s]));

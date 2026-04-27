@@ -1,18 +1,11 @@
 import { Card } from '@monorepo/ui';
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+import { apiFetch, apiUrl } from '@monorepo/utils';
 
 async function getStats() {
-  const [shopsRes, productsRes] = await Promise.all([
-    fetch(`${API_URL}/shops`, { cache: 'no-store' }),
-    fetch(`${API_URL}/products`, { cache: 'no-store' }),
-  ]);
-
   const [{ total: totalShops }, { total: totalProducts }] = await Promise.all([
-    shopsRes.json(),
-    productsRes.json(),
+    apiFetch(apiUrl('/shops'), { cache: 'no-store' }),
+    apiFetch(apiUrl('/products'), { cache: 'no-store' }),
   ]);
-
   return { totalShops, totalProducts };
 }
 
