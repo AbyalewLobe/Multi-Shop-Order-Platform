@@ -1,4 +1,5 @@
 import './globals.css';
+import Nav from './components/Nav';
 
 export const metadata = {
   title: 'Monorepo Web',
@@ -8,7 +9,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="bg-gray-50 text-gray-900 antialiased">{children}</body>
+      <body className="bg-gray-50 text-gray-900 antialiased">
+        <Nav />
+        {children}
+      </body>
     </html>
   );
 }

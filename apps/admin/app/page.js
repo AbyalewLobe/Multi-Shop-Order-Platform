@@ -13,18 +13,22 @@ export default async function DashboardPage() {
   const { totalShops, totalProducts } = await getStats();
 
   const stats = [
-    { label: 'Total Shops',    value: totalShops },
-    { label: 'Total Products', value: totalProducts },
+    { label: 'Total Shops',    value: totalShops,    icon: '🏪' },
+    { label: 'Total Products', value: totalProducts, icon: '📦' },
   ];
 
   return (
     <div>
-      <h2 className="text-2xl font-bold mb-6">Dashboard</h2>
+      <h2 className="text-2xl font-bold mb-1">Dashboard</h2>
+      <p className="text-sm text-gray-500 mb-6">Overview of your store data.</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg">
-        {stats.map(({ label, value }) => (
-          <Card key={label} className="p-6">
-            <p className="text-sm text-gray-500 mb-1">{label}</p>
-            <p className="text-4xl font-bold">{value}</p>
+        {stats.map(({ label, value, icon }) => (
+          <Card key={label} className="p-6 flex items-center gap-4">
+            <span className="text-3xl">{icon}</span>
+            <div>
+              <p className="text-sm text-gray-500">{label}</p>
+              <p className="text-3xl font-bold">{value}</p>
+            </div>
           </Card>
         ))}
       </div>

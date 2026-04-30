@@ -1,20 +1,13 @@
+import { apiFetch, apiUrl } from '@monorepo/utils';
 import ProductForm from './components/ProductForm';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
-
-async function getShops() {
-  const res = await fetch(`${API_URL}/shops`, { cache: 'no-store' });
-  if (!res.ok) throw new Error('Failed to fetch shops');
-  const { data } = await res.json();
-  return data;
-}
-
 export default async function ProductsPage() {
-  const shops = await getShops();
+  const { data: shops } = await apiFetch(apiUrl('/shops'), { cache: 'no-store' });
 
   return (
     <div>
-      <h2 className="text-2xl font-bold mb-6">Add Product</h2>
+      <h2 className="text-2xl font-bold mb-1">Add Product</h2>
+      <p className="text-sm text-gray-500 mb-6">Fill in the details to add a new product.</p>
       <ProductForm shops={shops} />
     </div>
   );
