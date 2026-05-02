@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
         <Sidebar />
         <div className="flex-1 flex flex-col min-h-screen">
           <header className="bg-white border-b border-gray-200 px-8 py-4">
-            <h1 className="text-sm font-medium text-gray-500">Monorepo Admin</h1>
+            <h1 className="text-sm font-medium text-gray-500">Admin</h1>
           </header>
           <main className="flex-1 px-8 py-8">{children}</main>
         </div>

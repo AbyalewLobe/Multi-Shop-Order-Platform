@@ -9,9 +9,9 @@ export default function HomePage() {
       <h1 className="text-5xl font-bold tracking-tight leading-tight">
         Browse shops &amp; products
       </h1>
-      <p className="text-lg text-gray-500 max-w-sm">
+      {/* <p className="text-lg text-gray-500 max-w-sm">
         A full-stack monorepo with Next.js, Express, and shared packages.
-      </p>
+      </p> */}
       <div className="flex gap-3 mt-2">
         <a href="/shops">
           <Button size="lg">Browse Shops</Button>
